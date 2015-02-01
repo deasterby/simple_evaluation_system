@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :sub_domains do as_routes end
   resources :domains do as_routes end
+  resources :indicator_score_definitions do as_routes end
+
   root 'home#index'
 
   get 'home/index'

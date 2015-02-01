@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150131051141) do
+ActiveRecord::Schema.define(version: 20150201061213) do
 
   create_table "domains", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "indicator_score_definitions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "min"
+    t.integer  "max"
+    t.integer  "fractional"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
