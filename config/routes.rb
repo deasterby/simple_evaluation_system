@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :indicator_ratings do as_routes end
+  resources :evaluative_indicators do as_routes end
   resources :indicator_average_definitions do as_routes end
   resources :sub_domains do as_routes end
   resources :domains do as_routes end

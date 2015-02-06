@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205001227) do
+ActiveRecord::Schema.define(version: 20150205235127) do
 
   create_table "domains", force: :cascade do |t|
     t.string   "name",       limit: 4000
@@ -19,12 +19,31 @@ ActiveRecord::Schema.define(version: 20150205001227) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "evaluative_indicators", force: :cascade do |t|
+    t.string   "name",          limit: 4000
+    t.text     "description",   limit: 2147483647
+    t.integer  "sub_domain_id", limit: 4
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "evaluative_indicators", ["sub_domain_id"], name: "index_evaluative_indicators_on_sub_domain_id"
+
   create_table "indicator_average_definitions", force: :cascade do |t|
     t.string   "name",        limit: 4000
     t.text     "calculation", limit: 2147483647
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
+
+  create_table "indicator_ratings", force: :cascade do |t|
+    t.integer "evaluative_indicator_id", limit: 4
+    t.string  "title",                   limit: 4000
+    t.decimal "value",                                      precision: 18, scale: 0
+    t.text    "description",             limit: 2147483647
+  end
+
+  add_index "indicator_ratings", ["evaluative_indicator_id"], name: "index_indicator_ratings_on_evaluative_indicator_id"
 
   create_table "indicator_score_definitions", force: :cascade do |t|
     t.string   "name",       limit: 4000
