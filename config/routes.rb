@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :evaluation_comment_definitions do as_routes end
+  resources :evaluation_section_definitions do as_routes end
+  resources :evaluation_definitions do as_routes end
   resources :indicator_ratings do as_routes end
   resources :evaluative_indicators do
     member do

@@ -14,57 +14,57 @@
 ActiveRecord::Schema.define(version: 20150206174933) do
 
   create_table "domains", force: :cascade do |t|
-    t.string   "name",       limit: 4000
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "evaluative_indicators", force: :cascade do |t|
-    t.string   "name",          limit: 4000
-    t.text     "description",   limit: 2147483647
-    t.integer  "sub_domain_id", limit: 4
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.string   "name"
+    t.text     "description"
+    t.integer  "sub_domain_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "evaluative_indicators", ["sub_domain_id"], name: "index_evaluative_indicators_on_sub_domain_id"
+  add_index "evaluative_indicators", ["sub_domain_id"], name: "index_evaluative_indicators_on_sub_domain_id", using: :btree
 
   create_table "indicator_average_definitions", force: :cascade do |t|
-    t.string   "name",        limit: 4000
-    t.text     "calculation", limit: 2147483647
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.string   "name"
+    t.text     "calculation"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "indicator_ratings", force: :cascade do |t|
-    t.integer "evaluative_indicator_id", limit: 4
-    t.string  "title",                   limit: 4000
-    t.decimal "value",                                      precision: 4, scale: 1
-    t.text    "description",             limit: 2147483647
+    t.integer "evaluative_indicator_id"
+    t.string  "title"
+    t.decimal "value",                   precision: 4, scale: 1
+    t.text    "description"
   end
 
-  add_index "indicator_ratings", ["evaluative_indicator_id"], name: "index_indicator_ratings_on_evaluative_indicator_id"
+  add_index "indicator_ratings", ["evaluative_indicator_id"], name: "index_indicator_ratings_on_evaluative_indicator_id", using: :btree
 
   create_table "indicator_score_definitions", force: :cascade do |t|
-    t.string   "name",       limit: 4000
-    t.integer  "min",        limit: 4
-    t.integer  "max",        limit: 4
-    t.integer  "fractional", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name"
+    t.integer  "min"
+    t.integer  "max"
+    t.integer  "fractional"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sub_domains", force: :cascade do |t|
-    t.string   "name",                            limit: 4000
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.integer  "domain_id",                       limit: 4
-    t.integer  "indicator_average_definition_id", limit: 4
-    t.integer  "indicator_score_definition_id",   limit: 4
+    t.string   "name"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "domain_id"
+    t.integer  "indicator_average_definition_id"
+    t.integer  "indicator_score_definition_id"
   end
 
-  add_index "sub_domains", ["indicator_average_definition_id"], name: "index_sub_domains_on_indicator_average_definition_id"
-  add_index "sub_domains", ["indicator_score_definition_id"], name: "index_sub_domains_on_indicator_score_definition_id"
+  add_index "sub_domains", ["indicator_average_definition_id"], name: "index_sub_domains_on_indicator_average_definition_id", using: :btree
+  add_index "sub_domains", ["indicator_score_definition_id"], name: "index_sub_domains_on_indicator_score_definition_id", using: :btree
 
   add_foreign_key "sub_domains", "domains"
   add_foreign_key "sub_domains", "indicator_average_definitions"
