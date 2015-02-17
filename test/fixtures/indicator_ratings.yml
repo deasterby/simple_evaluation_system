@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: indicator_ratings
+#
+#  id                      :integer          not null, primary key
+#  evaluative_indicator_id :integer
+#  title                   :string
+#  value                   :decimal(4, 1)
+#  description             :text
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined.  If you add columns to the
