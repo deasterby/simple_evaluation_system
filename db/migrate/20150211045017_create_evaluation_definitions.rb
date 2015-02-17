@@ -7,7 +7,8 @@ class CreateEvaluationDefinitions < ActiveRecord::Migration
     end
 
     create_table :evaluation_section_definitions do |t|
-      t.integer :order_index
+      t.integer    :order_index
+      t.string     :prompt
       t.belongs_to :evaluation_definition
       t.belongs_to :sub_domain
 
@@ -15,6 +16,7 @@ class CreateEvaluationDefinitions < ActiveRecord::Migration
     end
 
     create_table :evaluation_comment_definitions do |t|
+      t.string  :prompt
       t.boolean :required
       t.boolean :start_of_section
       t.integer :order_index

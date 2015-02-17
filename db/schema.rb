@@ -11,12 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150206174933) do
+ActiveRecord::Schema.define(version: 20150211045017) do
 
   create_table "domains", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "evaluation_comment_definitions", force: :cascade do |t|
+    t.string   "prompt"
+    t.boolean  "required"
+    t.boolean  "start_of_section"
+    t.integer  "order_index"
+    t.integer  "max_len"
+    t.integer  "evaluation_section_definition_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  create_table "evaluation_definitions", force: :cascade do |t|
+    t.string   "definition_name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "evaluation_section_definitions", force: :cascade do |t|
+    t.integer  "order_index"
+    t.string   "prompt"
+    t.integer  "evaluation_definition_id"
+    t.integer  "sub_domain_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "evaluative_indicators", force: :cascade do |t|

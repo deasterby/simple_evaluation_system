@@ -1,0 +1,12 @@
+<% @eval_def.evaluation_section_definitions.each do |sec| %>
+    <h1><%= sec.prompt %></h1>
+    <% sec.evaluation_comment_definitions.select { |cd| cd.start_of_section }.each do |cd| %>
+        <h2><%= cd.prompt %></h2>
+        <input type="text">
+    <% end %>
+    <% if !sec.sub_domain.nil? %>
+        <% sec.sub_domain.evaluative_indicators.each do |ei| %>
+          <p><%= ei.name %></p>
+        <% end %>
+    <% end %>
+<% end %>
