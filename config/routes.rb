@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resources :evaluations
   resources :evaluation_comment_definitions do as_routes end
   resources :evaluation_section_definitions do as_routes end
   resources :evaluation_definitions do as_routes end

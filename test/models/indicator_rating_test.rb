@@ -8,6 +8,10 @@
 #  value                   :decimal(4, 1)
 #  description             :text
 #
+# Indexes
+#
+#  index_indicator_ratings_on_evaluative_indicator_id  (evaluative_indicator_id)
+#
 
 require 'test_helper'
 

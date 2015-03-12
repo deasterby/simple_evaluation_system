@@ -10,6 +10,11 @@
 #  indicator_average_definition_id :integer
 #  indicator_score_definition_id   :integer
 #
+# Indexes
+#
+#  index_sub_domains_on_indicator_average_definition_id  (indicator_average_definition_id)
+#  index_sub_domains_on_indicator_score_definition_id    (indicator_score_definition_id)
+#
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 

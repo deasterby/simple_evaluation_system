@@ -1,0 +1,9 @@
+<h1>Evaluation#index</h1>
+<% @evaluation_definitions.each do |evaluation_definition| %>
+  <%= link_to "New " + evaluation_definition.definition_name, new_evaluation_path(evaluation_definition_id: evaluation_definition.id) %>
+<% end %>
+<ul>
+  <% @evaluations.each do |evaluation| %>
+    <li><%= link_to evaluation.display_name, edit_evaluation_path(evaluation) %></li>
+  <% end %>
+</ul>

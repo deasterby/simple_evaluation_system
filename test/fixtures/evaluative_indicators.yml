@@ -8,6 +8,11 @@
 #  sub_domain_id :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  order_index   :integer
+#
+# Indexes
+#
+#  index_evaluative_indicators_on_sub_domain_id  (sub_domain_id)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

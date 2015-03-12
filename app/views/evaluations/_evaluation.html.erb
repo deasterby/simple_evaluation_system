@@ -1,0 +1,35 @@
+<%= form_for @evaluation do |e| %>
+  <%= e.hidden_field :evaluation_definition_id %>
+  <%= e.date_select :evaluation_date %>
+  <%= e.fields_for :evaluation_sections do |es_form| %>
+    <div class="evaluation-section">
+      <%= es_form.hidden_field :evaluation_section_definition_id %>
+      <h2><%= es_form.object.evaluation_section_definition.prompt %></h2>
+      <%= es_form.fields_for :evaluation_comments do |comment| %>
+        <% if comment.object.evaluation_comment_definition.start_of_section %>
+          <%= comment.hidden_field :evaluation_comment_definition_id %>
+          <h3><%= comment.object.evaluation_comment_definition.prompt %></h3>
+          <%= comment.text_area :comment %>
+        <% end %>
+      <% end %>
+      <% if !es_form.object.evaluation_section_definition.sub_domain.nil? %>
+        <h4><%= es_form.object.evaluation_section_definition.sub_domain.name %></h4>
+        <%= es_form.fields_for :evaluation_indicators do |indicator| %>
+          <%= indicator.hidden_field :evaluative_indicator_id %>
+          <div>
+            <%= indicator.object.evaluative_indicator.name %>
+            <%= indicator.text_field :score %>
+          </div>
+        <% end %>
+      <% end %>
+      <%= es_form.fields_for :evaluation_comments do |comment| %>
+        <% if !comment.object.evaluation_comment_definition.start_of_section %>
+          <%= comment.hidden_field :evaluation_comment_definition_id %>
+          <h3><%= comment.object.evaluation_comment_definition.prompt %></h3>
+          <%= comment.text_area :comment %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= e.submit "Create" %>
+<% end %>
